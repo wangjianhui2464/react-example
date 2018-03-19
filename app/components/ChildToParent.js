@@ -9,7 +9,7 @@ import React, { Component } from 'react'
 class ListItem extends Component {
   render() {
     return (
-      <li style={{ backgroundColor: '#ffeef1', margin: '3' }}>
+      <li style={{ backgroundColor: '#ffeef1', margin: '3px' }}>
         <input type='checkbox' checked={this.props.checked}
                onChange={this.props.onChange} />
         <span>{this.props.value}</span>
@@ -52,9 +52,10 @@ export default class ChildToParent extends React.Component {
     };
   }
 
-  onItemChange(listItem) {
+  onItemChange(event, listItem) {
     const { list } = this.state;
-
+    console.log(event)
+    console.log(listItem)
   }
 
   render() {
