@@ -5,25 +5,29 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
+/**
+ * 子组件
+ */
 class ListItem extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    console.log('--ListItem--', this.props.checked)
     return (
       <li>
-        <input type="checkbox" defaultChecked={this.props.checked}
+        <input type="checkbox" checked={this.props.checked}
                onChange={this.props.onChange}/>
-        <span>checked: {this.props.checked.toString()},</span>
-        <span>value: {this.props.value}</span>
+        <span>选中了: {this.props.checked ? '✅' : '❌'},   </span>
+        <span>值: {this.props.value}</span>
       </li>
     );
   }
 }
 
-
+/**
+ * 父组件 引用 子组件 ListItem
+ */
 class List extends Component {
   constructor(props) {
     super(props);
@@ -33,23 +37,24 @@ class List extends Component {
   }
 
   onItemChange(entry) {
-    console.log('--List--', entry);
     const {list} = this.state;
     this.setState({
       list: list.map(prevEntry => {
-        console.log(prevEntry, entry);
         return {
           text: prevEntry.text,
-          checked: prevEntry.text === entry.text ? !prevEntry.checked : prevEntry.checked,
+          checked: prevEntry.text === entry.text ? prevEntry.checked : !prevEntry.checked,
         }
       }),
     });
+
+    // 调用父组件方法。直接通过 props 回调
     this.props.handleItemChange(entry);
   }
 
   render() {
     return (
       <div>
+        <h3>跨级组件： 演示示例</h3>
         <ul>
           {this.state.list.map((entry, index) => (
             <ListItem
@@ -65,7 +70,9 @@ class List extends Component {
   }
 }
 
-
+/**
+ * 根组件 引用父组件 List
+ */
 class App extends Component {
   constructor(props) {
     super(props);
@@ -75,19 +82,16 @@ class App extends Component {
         {text: 1, checked: false},
         {text: 2, checked: true},
         {text: 3, checked: false},
-        {text: 4, checked: true},
-        {text: 5, checked: false}
       ]
     }
   }
 
   handleChange(changeItem) {
-    console.log('--App--', changeItem);
     let newList = [].concat([...this.state.list]);
     this.state.list.forEach((listItem, index) => {
-      if (listItem.text === changeItem.text) {
-        newList[index].text = changeItem.text;
-        newList[index].checked = !changeItem.checked;
+      if (listItem.text !== changeItem.text) {
+        newList[index].text = listItem.text;
+        newList[index].checked = !listItem.checked;
       }
     });
 
@@ -98,16 +102,18 @@ class App extends Component {
 
   render() {
     return (
-      <div style={{margin: '50px'}}>
+      <div style={{margin: '10px', backgroundColor: '#e1e1e1', padding: '20px',}}>
         <List
           list={this.state.list}
           handleItemChange={this.handleChange}
         />
-        <div style={{margin: '30px'}}>
+
+        <h4>根组件里属性展示：</h4>
+        <div style={{margin: '10px'}}>
           {
             this.state.list.map((entry, index) => {
               return (
-                <div key={index}>{entry.text + ":" + entry.checked}</div>
+                <div key={index}>{entry.text + ": " + (entry.checked ? '✅' : '❌')}</div>
               )
             })
           }

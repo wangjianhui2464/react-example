@@ -8,8 +8,10 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 
 module.exports = {
   entry: [
-    // './app/index.js',
-    './test/test.js',
+    // './app/components/ParentToChild.js',
+    // './app/components/ChildToParent.js',
+    './app/components/BrotherToBrother.js',
+    // './test/test.js',
   ],
   output: {
     path: `${__dirname}/dist`,
