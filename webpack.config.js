@@ -7,6 +7,7 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 module.exports = {
+  mode: 'development',
   entry: [
     // './app/components/ParentToChild.js',
     // './app/components/ChildToParent.js',
@@ -18,7 +19,7 @@ module.exports = {
     filename: 'index_bundle.js',
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
