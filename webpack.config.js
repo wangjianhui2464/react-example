@@ -12,7 +12,7 @@ module.exports = {
     // './app/components/ParentToChild.js',
     // './app/components/ChildToParent.js',
     // './app/components/BrotherToBrother.js',
-    './app/components/BroUseEventProxy.js',
+    './app/components/BroUseObserver.js',
     // './test/test.js',
   ],
   output: {

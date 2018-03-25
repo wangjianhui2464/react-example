@@ -13,7 +13,7 @@
     - [父组件向子组件通信](./app/components/ParentToChild.js)
     - [子组件向父组件通信](./app/components/ChildToParents.js)
     - [跨级组件通信](./app/components/BrotherTOBrother.js)
-    - [组件通信-订阅模式](./app/components/BroUseEventProxy.js)
+    - [组件通信-订阅模式](./app/components/BroUseObserver.js)
 
 2. 组件间抽象
     - mixin

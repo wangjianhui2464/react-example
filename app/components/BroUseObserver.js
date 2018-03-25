@@ -5,11 +5,11 @@
 
 import React, {Component} from 'react';
 import ReactDOM from "react-dom";
-import eventProxy from '../utils/eventProxy'
+import Observer from '../utils/Observer'
 
 class Parent extends Component {
   componentDidUpdate() {
-    console.log('Parent update');
+    console.log('parent update');
   }
 
   render() {
@@ -29,7 +29,7 @@ class Child_1 extends Component {
   componentDidMount() {
     setTimeout(() => {
       // 发布 msg 事件
-      eventProxy.trigger('msg', '事件执行了哦。看看子组件有几个重新渲染的。');
+      Observer.trigger('msg', '事件执行了哦。看看子组件有几个重新渲染的。');
     }, 2000);
   }
 
@@ -59,7 +59,7 @@ class Child_2 extends Component {
 
   componentDidMount() {
     // 监听 msg 事件
-    eventProxy.on('msg', (msg) => {
+    Observer.on('msg', (msg) => {
       this.setState({
         msg
       });
