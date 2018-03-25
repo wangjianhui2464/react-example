@@ -11,7 +11,8 @@ module.exports = {
   entry: [
     // './app/components/ParentToChild.js',
     // './app/components/ChildToParent.js',
-    './app/components/BrotherToBrother.js',
+    // './app/components/BrotherToBrother.js',
+    './app/components/BroUseEventProxy.js',
     // './test/test.js',
   ],
   output: {

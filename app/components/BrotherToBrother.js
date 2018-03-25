@@ -18,7 +18,7 @@ class ListItem extends Component {
       <li style={this.props.checked ? { backgroundColor: this.context.color } : null}>
         <input type="checkbox" checked={this.props.checked}
                onChange={this.props.onChange} />
-        <span>选中了: {this.props.checked ? '✅√' : '❌-'},   </span>
+        <span>选中了: {this.props.checked ? '✅√ ' : '❌-'},   </span>
         <span>值: {this.props.value}</span>
       </li>
     );
@@ -113,7 +113,7 @@ class App extends Component {
           {
             this.state.list.map((entry, index) => {
               return (
-                <div key={index}>{entry.text + ": " + (entry.checked ? '✅√' : '❌-')}</div>
+                <div key={index}>{entry.text + ": " + (entry.checked ? '✅√ ' : '❌-')}</div>
               )
             })
           }

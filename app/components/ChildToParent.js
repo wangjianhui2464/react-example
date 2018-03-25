@@ -51,11 +51,8 @@ class List extends Component {
         <ul>
           {this.state.list.map((entry, index) => (
             <ListItem
-              key={`list-${index}`}
-              value={entry.text}
-              checked={entry.checked}
-              onChange={this.onItemChange.bind(this, entry)}
-            />
+              key={`list-${index}`} value={entry.text} checked={entry.checked}
+              onChange={this.onItemChange.bind(this, entry)}/>
           ))}
         </ul>
       </div>
@@ -66,7 +63,7 @@ class List extends Component {
 /**
  * 根组件
  */
-class App extends Component {
+class ChildToParent extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -120,4 +117,4 @@ class App extends Component {
 }
 
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<ChildToParent/>, document.getElementById('app'));
