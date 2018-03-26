@@ -7,14 +7,14 @@ import React, {Component} from 'react';
 import ReactDOM from "react-dom";
 import Observer from '../utils/Observer'
 
-class Parent extends Component {
+export default class Parent extends Component {
   componentDidUpdate() {
     console.log('parent update');
   }
 
   render() {
     return (
-      <div style={{margin: '10px', backgroundColor: '#e1e1e1', padding: '20px',}}>
+      <div className="container" style={{marginTop: '10px', backgroundColor: '#e1e1e1', padding: '20px',}}>
         <Child_1/>
         <Child_2/>
       </div>
@@ -96,5 +96,3 @@ class Child_2_1 extends Component {
     )
   }
 }
-
-ReactDOM.render(<Parent/>, document.getElementById('app'));

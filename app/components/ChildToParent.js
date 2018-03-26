@@ -47,7 +47,7 @@ class List extends Component {
   render() {
     return (
       <div>
-        <h3>Parent --> Child 演示示例</h3>
+        <h3>Child --> Parent演示示例</h3>
         <ul>
           {this.state.list.map((entry, index) => (
             <ListItem
@@ -63,7 +63,7 @@ class List extends Component {
 /**
  * 根组件
  */
-class ChildToParent extends Component {
+export default class ChildToParent extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -95,7 +95,7 @@ class ChildToParent extends Component {
 
   render() {
     return (
-      <div style={{margin: '10px', backgroundColor: '#e1e1e1', padding: '20px',}}>
+      <div className="container" style={{marginTop: '10px', backgroundColor: '#e1e1e1', padding: '20px',}}>
         <List
           list={this.state.list}
           handleItemChange={this.handleChange}
@@ -115,6 +115,3 @@ class ChildToParent extends Component {
     );
   }
 }
-
-
-ReactDOM.render(<ChildToParent/>, document.getElementById('app'));
