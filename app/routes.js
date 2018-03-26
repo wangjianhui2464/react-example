@@ -11,6 +11,10 @@ import ChildToParent from './components/ChildToParent';
 import BrotherToBrother from './components/BrotherToBrother';
 import BroUseObserver from './components/BroUseObserver';
 import SimpleHoc from './components/SimpleHoc';
+import HocOperateProps from './components/HocOperateProps';
+import HocGetRefs from './components/HocGetRefs';
+import HocOutOfState from './components/HocOutOfState';
+import HocElementWarppedHoc from './components/HocElementWarppedHoc';
 
 const Routes = () => (
   <div>
@@ -26,6 +30,13 @@ const Routes = () => (
     <Route path="/brotherToBrother" component={BrotherToBrother}/>
     <Route path="/broUseObserver" component={BroUseObserver}/>
     <Route path="/simpleHoc" component={SimpleHoc}/>
+
+    <Route path="/hocOperateProps" component={HocOperateProps}/>
+    <Route path="/hocGetRefs" component={HocGetRefs}/>
+    <Route path="/hocOutOfState" component={HocOutOfState}/>
+    <Route path="/hocElementWarppedHoc" component={HocElementWarppedHoc}/>
+
+
   </div>
 );
 

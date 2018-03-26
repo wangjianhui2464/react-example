@@ -15,7 +15,7 @@ class App extends React.Component {
               <Link to="parentToChild">父子通信</Link>
               <Link to="childToParent">子父通信</Link>
               <Link to="brotherToBrother">跨级组件</Link>
-              <Link to="broUseObserver">无嵌套关系</Link>
+              <Link to="broUseObserver">观察者模式</Link>
               <span>|</span>
               <Link to="simpleHoc">高阶组件</Link>
               <Link to="broUseObserver">组合式组件</Link>
