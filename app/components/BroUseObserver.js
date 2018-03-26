@@ -14,7 +14,8 @@ export default class Parent extends Component {
 
   render() {
     return (
-      <div className="container" style={{marginTop: '10px', backgroundColor: '#e1e1e1', padding: '20px',}}>
+      <div className="container" style={{marginTop: '10px', backgroundColor: '#e1e1e1', padding: '20px'}}>
+        <h3>"发布/订阅模式" 来实现各种层级的组件间通信</h3>
         <Child_1/>
         <Child_2/>
       </div>
@@ -29,7 +30,7 @@ class Child_1 extends Component {
   componentDidMount() {
     setTimeout(() => {
       // 发布 msg 事件
-      Observer.trigger('msg', '事件执行了哦。看看子组件有几个重新渲染的。');
+      Observer.trigger('msg', '事件执行了哦。查看控制台，有几个子组件重新渲染了。');
     }, 2000);
   }
 
@@ -40,7 +41,7 @@ class Child_1 extends Component {
   render() {
     return (
       <div>
-        <p>child_1 component</p>
+        <p>一级子组件</p>
       </div>
     )
   }
@@ -73,7 +74,7 @@ class Child_2 extends Component {
   render() {
     return (
       <div>
-        <p>child_2 component: {this.state.msg}</p>
+        <p>二级子组件： <span style={{color: 'red'}}>{this.state.msg}</span></p>
         <Child_2_1/>
       </div>
     )
@@ -91,7 +92,7 @@ class Child_2_1 extends Component {
   render() {
     return (
       <div>
-        <p>Child_2_1 component</p>
+        <p>二级下一级组件</p>
       </div>
     )
   }

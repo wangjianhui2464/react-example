@@ -34,12 +34,17 @@ class UsualComponent extends Component {
     return (
       <div className="container" style={{marginTop: '10px', backgroundColor: '#e1e1e1', padding: '20px'}}>
         <h3>这个常用组件，被包装过，包裹他的组件可以对此组件进行修改，也可以执行 生命周期的所有钩子函数。</h3>
-        <div>下面我们就来看一下 高阶组件可以实现的一些功能：</div>
+        <h4>高阶组件-属性代理 特性实现示例：</h4>
         <ul>
           <li><Link to="hocOperateProps">操作props</Link></li>
           <li><Link to="hocGetRefs">refs获取组件实例</Link></li>
           <li><Link to="hocOutOfState">抽离state</Link></li>
           <li><Link to="hocElementWarppedHoc">使用其它元素包裹 WarppedComponent</Link></li>
+        </ul>
+        <br/>
+        <h4>高阶组件-反向继承 特性实现示例：</h4>
+        <ul>
+          <li><Link to="hocHijackRender">渲染劫持</Link></li>
         </ul>
       </div>
     )
