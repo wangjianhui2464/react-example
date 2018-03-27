@@ -45,6 +45,7 @@ class UsualComponent extends Component {
         <h4>高阶组件-反向继承 特性实现示例：</h4>
         <ul>
           <li><Link to="hocHijackRender">渲染劫持</Link></li>
+          <li><Link to="hocControlState">控制 state</Link></li>
         </ul>
       </div>
     )

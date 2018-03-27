@@ -16,6 +16,10 @@ import HocGetRefs from './components/HocGetRefs';
 import HocOutOfState from './components/HocOutOfState';
 import HocElementWarppedHoc from './components/HocElementWarppedHoc';
 import HocHijackRender from './components/HocHijackRender';
+import HocControlState from './components/HocControlState';
+
+
+import NoMatch from './components/NoMatch';
 
 const Routes = () => (
   <div>
@@ -38,8 +42,9 @@ const Routes = () => (
     <Route path="/hocElementWarppedHoc" component={HocElementWarppedHoc}/>
 
     <Route path="/hocHijackRender" component={HocHijackRender}/>
+    <Route path="/hocControlState" component={HocControlState}/>
 
-
+    {/*<Route path="*" component={NoMatch}/>*/}
   </div>
 );
 

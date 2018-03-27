@@ -20,9 +20,8 @@ class Usual extends Component {
   render() {
     return (
       <div className="container" style={{marginTop: '10px', backgroundColor: '#e1e1e1', padding: '20px'}}>
-        <h3>渲染劫持</h3>
+        <h3>控制 state</h3>
         <br/>
-        <input type='input' name="hoc"/>
         <div style={{border: '1px solid red', padding: '0 10px', margin: '10px 0'}}>
           当前组件 state：
           <pre>{JSON.stringify(this.state, null, 2)}</pre>
@@ -33,43 +32,41 @@ class Usual extends Component {
 }
 
 /**
- * 条件渲染
+ * 控制 state 示例：获取 props、state
  * @param WrappedComponent
  * @return {{new(): {render(): *}}}
  * @constructor
  */
-const MyContainer1 = (WrappedComponent) => class extends WrappedComponent {
+const MyContainer = (WrappedComponent) => class extends WrappedComponent {
   render() {
-    if (this.state.usual) {
-      return super.render();
-    } else {
-      return null;
-    }
+    return (
+      <div className="container" style={{marginTop: '10px', backgroundColor: '#e1e1e1', padding: '20px'}}>
+        <h2>HOC Debugger Component</h2>
+        <p>Props</p>
+        <pre>{JSON.stringify(this.props, null, 2)}</pre>
+        <p>State</p>
+        <pre>{JSON.stringify(this.state, null, 2)}</pre>
+        {super.render()}
+      </div>);
   }
 };
+
 
 /**
- *
+ * 高阶组件 操作 props
  * @param WrappedComponent
  */
-const MyContainer2 = (WrappedComponent) => {
+const iiHoc = (WrappedComponent) => {
   return class extends WrappedComponent {
     render() {
-      const elementsTree = super.render();
-      let newProps = {};
-      if (elementsTree && elementsTree.type === 'input') {
-        newProps = {value: 'may the force be with you'};
-      }
-      const props = Object.assign({}, elementsTree.props, newProps);
-      const newElementsTree = React.cloneElement(elementsTree, props, elementsTree.props.children);
-      return newElementsTree;
+      console.log('---渲染劫持-高阶组件-拿到包裹组件 state--', this.state);
+      return super.render();
     }
   }
 };
-
 
 /**
  * 此处返回的 高阶组件 可以 挨个改为上述 几个 高阶组件测试。
- * MyContainer1、MyContainer2
+ * MyContainer、iiHoc
  */
-export default MyContainer1(Usual);
+export default MyContainer(Usual);
