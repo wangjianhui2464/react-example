@@ -17,9 +17,8 @@
 
 2. 组件间抽象
     - mixin
-    - 高阶组件
+    - [高阶组件](./app/components/SimpleHoc.js)
     - 组合式租价开发
-
 
 3. 组件性能优化
     - 纯函数
