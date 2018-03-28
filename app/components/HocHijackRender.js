@@ -72,4 +72,4 @@ const MyContainer2 = (WrappedComponent) => {
  * 此处返回的 高阶组件 可以 挨个改为上述 几个 高阶组件测试。
  * MyContainer1、MyContainer2
  */
-export default MyContainer1(Usual);
+export default MyContainer2(Usual);

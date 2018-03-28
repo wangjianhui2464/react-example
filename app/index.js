@@ -19,10 +19,10 @@ class App extends React.Component {
               <span>|</span>
 
               <Link to="/simpleHoc">高阶组件</Link>
-              <Link to="/broUseObserver">组合式组件</Link>
+              {/*<Link to="/broUseObserver">组合式组件</Link>*/}
               <span>|</span>
 
-              <Link to="/broUseObserver">性能优化</Link>
+              <Link to="/pureComponent">性能优化</Link>
             </div>
             <Routes/>
           </div>
