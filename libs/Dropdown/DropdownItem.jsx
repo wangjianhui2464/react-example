@@ -1,34 +1,36 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class DropdownItem extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
-    command: PropTypes.string,
     disabled: PropTypes.bool,
+    onItemSelect: PropTypes.func,
     children: PropTypes.any,
   };
 
   static defaultProps = {
     className: 'dropdown-items',
     disabled: false,
+    onItemSelect: () => null,
     children: null,
-    command: '',
   };
 
-  static contextTypes = {
-    dropdownComponent: PropTypes.any,
-  };
+  constructor(props) {
+    super(props);
+    this.handleSelect = this.handleSelect.bind(this);
+  }
 
   handleSelect() {
-    this.context.dropdownComponent.onDropownItemClick(this.props.command, this);
+    this.props.onItemSelect(this);
   }
 
   render() {
     const { disabled, className } = this.props;
     const classNameStr = `${disabled ? 'disabled' : ''} ${className}`;
     return (
-      <div className={classNameStr} onClick={this.handleSelect.bind(this)}>
+      <div className={classNameStr} onClick={this.handleSelect}>
         {this.props.children}
       </div>
     );
