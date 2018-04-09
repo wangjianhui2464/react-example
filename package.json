@@ -4,12 +4,14 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "webpack-dev-server --devtool eval --progress --colors --content-base build"
   },
   "author": "wangjh",
   "license": "MIT",
   "dependencies": {
+    "jest": "22.4.3",
+    "npm": "5.8.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "4.2.2"
