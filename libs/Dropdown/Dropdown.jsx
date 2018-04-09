@@ -45,11 +45,11 @@ class Dropdown extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.addEventListener('click', this.handleClickOutside, true);
+    document.addEventListener('click', this.handleClickOutside);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', this.handleClickOutside, true);
+    document.removeEventListener('click', this.handleClickOutside);
   }
 
   /**
@@ -87,9 +87,10 @@ class Dropdown extends React.PureComponent {
   handleClickOutside(e) {
     // 拿到容器判断，当前点击包含在容器内，执行 clickOutSide
     const el = this.container;
+    // 防止同一个页面使用多个 dropdown 组件，导致点击 document 互相影响。
     if (!el.contains(e.target)) {
       if (e.nativeEvent) {
-        e.nativeEvent.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
       }
       if (this.state.visible) {
         this.setState({ visible: false });
@@ -99,39 +100,24 @@ class Dropdown extends React.PureComponent {
 
   /**
    * 选中下拉选项后执行函数
-   * @param clickItem 选中下拉项组件实例
+   * @param clickItemProps 选中下拉项组件 props
    */
-  onDropownItemClick(clickItem) {
-    const { onItemSelect, hideOnClick } = this.props;
-    // if dropitem is disabled, do nothing.
-    if (clickItem && !clickItem.props.disabled) {
-      if (hideOnClick) {
-        this.setState({
-          visible: false,
-        });
-      }
+  onDropownItemClick(clickItemProps) {
+    if (this.props.hideOnClick) {
+      this.setState({
+        visible: false,
+      });
+    }
 
-      // 点击之后将点击节点 text 置于 button 上
-      if (clickItem.props.children) {
-        this.setState({
-          buttonText: clickItem.props.children,
-        });
-      }
+    // 点击之后将点击节点 text 置于 button 上
+    if (clickItemProps.buttonText) {
+      this.setState({
+        buttonText: clickItemProps.buttonText,
+      });
+    }
 
-      /**
-       * 如果有选中就调用回调
-       */
-      if (onItemSelect) {
-        const filterProps = {};
-        // 处理传递给回调函数的参数：去掉 typeof 为 function
-        Object.keys(clickItem.props).forEach((item) => {
-          if (typeof clickItem.props[item] !== 'function') {
-            filterProps[item] = clickItem.props[item];
-          }
-        });
-
-        onItemSelect(filterProps);
-      }
+    if (this.props.onItemSelect) {
+      this.props.onItemSelect(clickItemProps);
     }
   }
 
