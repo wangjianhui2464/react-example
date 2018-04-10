@@ -8,8 +8,6 @@ class Dropdown extends React.PureComponent {
     trigger: PropTypes.oneOf(['hover', 'click']),
     // 自定义样式名称
     className: PropTypes.string,
-    // 按钮text
-    buttonText: PropTypes.string,
     // 点击是否隐藏
     hideOnClick: PropTypes.bool,
     // 点击菜单项 触发回调
@@ -19,7 +17,6 @@ class Dropdown extends React.PureComponent {
 
   static defaultProps = {
     trigger: 'hover',
-    buttonText: '点击下拉',
     hideOnClick: true,
     className: 'dropdown-container',
     onItemSelect: () => null,
@@ -30,10 +27,6 @@ class Dropdown extends React.PureComponent {
     super(props);
     this.state = {
       visible: false,
-      buttonText:
-        props.buttonText && props.buttonText !== ''
-          ? props.buttonText
-          : '点击下拉',
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -109,13 +102,6 @@ class Dropdown extends React.PureComponent {
       });
     }
 
-    // 点击之后将点击节点 text 置于 button 上
-    if (clickItemProps.buttonText) {
-      this.setState({
-        buttonText: clickItemProps.buttonText,
-      });
-    }
-
     if (this.props.onItemSelect) {
       this.props.onItemSelect(clickItemProps);
     }
@@ -141,7 +127,7 @@ class Dropdown extends React.PureComponent {
             trigger && trigger === 'click' ? this.handleClick : () => null
           }
         >
-          {this.state.buttonText}
+          {this.props.buttonText}
         </div>
 
         {this.state.visible
