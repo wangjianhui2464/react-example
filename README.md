@@ -1,11 +1,11 @@
-## React 学习记录示例代码：
+# React 学习记录示例代码：
 
 > 此库内容更多是阅读《深入React技术栈》整理的示例代码。
 > 
 > 当初刚开始学习上手就是直接从 React Native 开始的，所以其依赖的 React 却没有好好学习过。感觉有很多细节的知识有遗漏，所以重新学习 React 查漏补缺！
 
 
-### Install
+## Install
 
 ```bash
 git clone https://github.com/wangjianhui2464/react-example.git
@@ -20,7 +20,14 @@ npm run dev
 ```
 
 
-### 目录
+## 目录
+
+### 组件库：
+
+1. [Dropdown 组件](./libs/Dropdown/example.js)
+2. 
+
+### 示例代码：
 
 1. 组件间通信
     - [父组件向子组件通信](./app/components/ParentToChild.js)
