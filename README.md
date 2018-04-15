@@ -24,8 +24,8 @@ npm run dev
 
 ### 组件库：
 
-1. [Dropdown 组件](./libs/Dropdown/example.js)
-2. 
+1. [Dropdown：下拉组件](./libs/Dropdown/example.js)
+2. [懒加载]
 
 ### 示例代码：
 
